@@ -41,7 +41,7 @@ bool Job::isTerminated() {
 }
 
 bool Job::isLatched() {
-    return lactched;
+    return latched;
 }
 
 void Job::setLatched(bool latched) {
