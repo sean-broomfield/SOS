@@ -4,9 +4,11 @@
 using namespace std;
 
     static list<Job> jobs;
+    static Job running_job; //job object that runs on cpu-NICK
 
     void startup() {
-        sos.ontrace();
+        //sos.ontrace();
+        
     }
 
     void Crint(int *a, int p[]) {
@@ -23,7 +25,7 @@ using namespace std;
         return;
     }
     
-    void Svc (int *a, int p[]) {
+    void Svc (int a, int p[]) {
         cout << "Supervisor call." << endl;
         switch(a)
         {
@@ -48,8 +50,23 @@ using namespace std;
         return;
     }
     
+    /*
+    This fucnction is going to keep track of the jobs time
+    parameter: time p[5] will be passed in the fucntion.
+    Will be called at the beginning of each interupt. - NICK
+    */
+    
     void bookKeep(int time) {
-        return;
+      int time_difference;	//time job has actually runned
+      time_difference = time - running_job.getStartTime();
+
+      if(time_difference <= running_job.getMaxTime())
+      {
+          running_job.setCurrentTime(time_difference);
+
+      }
+
+      
     }
     
 

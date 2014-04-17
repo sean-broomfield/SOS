@@ -8,6 +8,7 @@ public:
     Job();
     Job(int, int, int, int, int);
     int getCurrentTime();
+    int getStartTime();		//accessor for startTime-Nick
     int getDirection();
     int getMaxTime();
     int getNumber();
@@ -28,6 +29,7 @@ public:
     void setBlocked(bool blocked);
     void setTerminated(bool terminated);
     void setLatched(bool latched);
+	void setStartTime(int startTime);	//mutator for startTime-Nick
 
 private:
     bool latched;
@@ -41,6 +43,7 @@ private:
     int location;
     int currentTime;
     int direction;
+    int startTime;		//Jobs startTime-Nick
 
 };
 
