@@ -14,7 +14,7 @@ public:
     int getNumber();
     int getLocation();
     int getSize();
-	int getAddress();	//accessor for address-NICK
+    int getAddress();	//accessor for address-NICK
     bool isInMemory();
     bool isBlocked();
     bool isTerminated();
@@ -30,8 +30,8 @@ public:
     void setBlocked(bool blocked);
     void setTerminated(bool terminated);
     void setLatched(bool latched);
-	void setStartTime(int startTime);	//mutator for startTime-Nick
-	void setAddress(int address);		//mutator for address-NICk
+    void setStartTime(int startTime);	//mutator for startTime-Nick
+    void setAddress(int address);		//mutator for address-NICk
 
 private:
     bool latched;
