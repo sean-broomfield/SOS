@@ -14,6 +14,7 @@ public:
     int getNumber();
     int getLocation();
     int getSize();
+	int getAddress();	//accessor for address-NICK
     bool isInMemory();
     bool isBlocked();
     bool isTerminated();
@@ -30,6 +31,7 @@ public:
     void setTerminated(bool terminated);
     void setLatched(bool latched);
 	void setStartTime(int startTime);	//mutator for startTime-Nick
+	void setAddress(int address);		//mutator for address-NICk
 
 private:
     bool latched;
@@ -44,6 +46,7 @@ private:
     int currentTime;
     int direction;
     int startTime;		//Jobs startTime-Nick
+    int address;		//address for the running job-NICK
 
 };
 
