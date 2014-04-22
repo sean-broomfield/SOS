@@ -5,11 +5,21 @@ Job::Job() {}
 Job::Job(int number, int priority, int size, int cpuTime, int currentTime) : number(number), priority(priority), size(size), maxTime(cpuTime), currentTime(currentTime), inMemory(false), blocked(false), terminated(false), direction(0), location(-1) {}
 
 /*
-returns the starttime of a job - NICK
+returns the starttime of a job
+NICK
 */
 int Job::getStartTime() {
 	return startTime;
 }
+
+/*
+reuturns the address of the job
+NICK
+*/
+int Job::getAddress() {
+	return address;
+}
+
 
 int Job::getCurrentTime() {
     return currentTime;
@@ -93,4 +103,8 @@ void Job::setPriority(int priority) {
 
 void Job::setStartTime(int startTime) {
 	this->startTime = startTime;
+}
+
+void Job::setAddress(int address) {
+	this->address=address;
 }
