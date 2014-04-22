@@ -71,23 +71,23 @@ using namespace std;
     }
     
     /*
-	The Dispacther fucntion set the CPU registers before leaving the interupts
-	parameters: int *a-CPU mode; int p[]- job's infomation from p[1]-p[5] if needed
-	NICK
-	*/
+    The Dispacther fucntion set the CPU registers before leaving the interupts
+    parameters: int *a-CPU mode; int p[]- job's infomation from p[1]-p[5] if needed
+    NICK
+    */
 
-	void Dispatcher(int *a, int p[]) {
+    void Dispatcher(int *a, int p[]) {
 		
-		if(!running_job.isInMemory() || running_job.isBlocked()) {
-			*a=1;
-		}
-	
-		else {
-			*a=2;
-			p[2]=running_job.getAddress();
-			p[3]=running_job.getSize();
-			p[4]=TimeSlice;
-		}
+	if(!running_job.isInMemory() || running_job.isBlocked()) {
+		*a=1;
 	}
+	
+	else {
+	    *a=2;
+	    p[2]=running_job.getAddress();
+	    p[3]=running_job.getSize();
+	    p[4]=TimeSlice;
+	}
+    }
 
 
