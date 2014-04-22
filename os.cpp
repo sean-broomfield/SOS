@@ -5,6 +5,7 @@ using namespace std;
 
     static list<Job> jobs;
     static Job running_job; //job object that runs on cpu-NICK
+    int TimeSlice=100;	//setting time slice for now; coud change later on-NICK
 
     void startup() {
         //sos.ontrace();
