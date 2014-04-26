@@ -2,11 +2,13 @@
 #define JOB_H
 
 #include <iostream>
+#include "Memory.h"
 
 class Job {
 public:
     Job();
-    Job(int, int, int, int, int);
+    Job(int, int, int, int, int, Memory);
+    int getAddress();
     int getCurrentTime();
     int getStartTime();		//accessor for startTime-Nick
     int getDirection();
@@ -14,10 +16,12 @@ public:
     int getNumber();
     int getLocation();
     int getSize();
+    int getAddress();	//accessor for address-NICK
     bool isInMemory();
     bool isBlocked();
     bool isTerminated();
     bool isLatched();
+    bool findMemory();
     
     void setDirection(int directon);
     void setLocation(int location);
@@ -29,9 +33,11 @@ public:
     void setBlocked(bool blocked);
     void setTerminated(bool terminated);
     void setLatched(bool latched);
-	void setStartTime(int startTime);	//mutator for startTime-Nick
+    void setStartTime(int startTime);	//mutator for startTime-Nick
+    void setAddress(int address);		//mutator for address-NICk
 
 private:
+    int address;
     bool latched;
     bool blocked;
     bool inMemory;
@@ -44,6 +50,8 @@ private:
     int currentTime;
     int direction;
     int startTime;		//Jobs startTime-Nick
+    Memory memory;
+    int address;		//address for the running job-NICK
 
 };
 
