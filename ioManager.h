@@ -6,6 +6,9 @@
 #include <cstdlib>
 #include "Job.h"
 
+void siodisk(int JobNum);
+void siodrum(int jobNum, int Size, int location, int direction);
+
 using namespace std;
 
 class ioManager {
@@ -17,7 +20,7 @@ public:
         
         if(ioQueue.size() == 1) {
             //CALL SOS SIODISK
-            //siodisk(job.getNumber());
+            siodisk(job.getNumber());
             return job;
         } else {
             return ioQueue.front();
@@ -30,7 +33,7 @@ public:
         if (ioQueue.size() > 0) {
             Job newJob = ioQueue.front();
             //CALL SOS SIODISK
-            //sos.siodisk(newJob.getNumber());
+            siodisk(newJob.getNumber());
             newJob.setLatched(true);
             return newJob;
         }

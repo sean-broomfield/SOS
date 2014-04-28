@@ -1,11 +1,20 @@
 #include "Job.h"
 
-Job::Job() {}
+Job::Job() : number(-1) {}
 
-Job::Job(int number, int priority, int size, int cpuTime, int currentTime, Memory memory) : number(number), priority(priority), size(size), maxTime(cpuTime), currentTime(currentTime), inMemory(false), blocked(false), terminated(false), direction(0), location(-1),memory(memory) {}
-
-int Job::getAddress() {
-	return address;
+Job::Job(int number, int priority, int size, int cpuTime, int currentTime, Memory memory) {
+    
+    this->number = number;
+    this->priority = priority;
+    this->size = size;
+    this->maxTime = cpuTime;
+    this->currentTime = currentTime;
+    this->inMemory = false;
+    this->blocked = false;
+    this->terminated = false;
+    this->direction = -1;
+    this->memory = memory;
+    this->location = memory.findSpace(size);
 }
 
 bool Job::findMemory() {
@@ -17,13 +26,21 @@ bool Job::findMemory() {
 }
 
 /*
+<<<<<<< HEAD
 reuturns the address of the job
+=======
+returns the starttime of a job
+>>>>>>> FETCH_HEAD
 NICK
 */
+
+int Job::getStartTime() {
+    return startTime;
+}
+
 int Job::getAddress() {
 	return address;
 }
-
 
 int Job::getCurrentTime() {
     return currentTime;

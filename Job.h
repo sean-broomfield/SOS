@@ -16,7 +16,6 @@ public:
     int getNumber();
     int getLocation();
     int getSize();
-    int getAddress();	//accessor for address-NICK
     bool isInMemory();
     bool isBlocked();
     bool isTerminated();
@@ -51,7 +50,6 @@ private:
     int direction;
     int startTime;		//Jobs startTime-Nick
     Memory memory;
-    int address;		//address for the running job-NICK
 
 };
 

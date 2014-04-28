@@ -6,6 +6,9 @@
 
 using namespace std;
 
+void siodisk(int JobNum);
+void siodrum(int jobNum, int Size, int location, int direction);
+
 class DrumManager {
 public:
     DrumManager();
@@ -53,9 +56,9 @@ public:
         if (drumQueue.size() > 0 && drumQueue.front().getNumber() != drumJob.getNumber()) {
             Job newJob = drumQueue.front();
             if(newJob.getDirection() == 1) {
-                //sos->siodrum(newJob.getNumber(), newJob.getSize(), newJob.getLocation(), 0);
+                siodrum(newJob.getNumber(), newJob.getSize(), newJob.getLocation(), 0);
             } else {
-                //sos->siodrum(newJob.getNumber(), newJob.getSize(),    newJob.getLocation(), 1);
+                siodrum(newJob.getNumber(), newJob.getSize(),    newJob.getLocation(), 1);
             }
             return newJob;
         }

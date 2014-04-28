@@ -12,14 +12,18 @@ using namespace std;
     static DrumManager drum(jobs);
     static ioManager io;
     static int TimeSlice = 100;
-    static list<Job> jobs;
-    static Job running_job; //job object that runs on cpu-NICK
-    int TimeSlice=100;	//setting time slice for now; coud change later on-NICK
 
     void bookKeep(int time);
+    void ontrace();
+    void offtrace();
+    void siodisk(int JobNum);
+    void siodrum(int jobNum, int Size, int location, int direction);
+
 
     //Must determine what needs to be initialized.
-    void startup() {}
+    void startup() {
+        ontrace();
+    }
 
     void Crint(int &a, int p[]) {
         bookKeep(p[5]);
@@ -29,6 +33,7 @@ using namespace std;
         jobs.push_back(job);
         if(job.getLocation() != -1) {
             drum.queueJob(job, 1);
+            cout << "Job on drum." << endl;
         }
         drumJob = drum.manageDrum(drumJob);
         //CHECK JOB LOCATION AND SEND JOB TO DRUM
@@ -65,6 +70,8 @@ using namespace std;
     
     void Drmint(int &a, int p[]) {
         bookKeep(p[5]);
+        drum.swap(jobs);
+        drumJob = drum.manageDrum(drumJob);
         return;
     }
     
@@ -92,22 +99,25 @@ using namespace std;
       
     }
 
-/*
- The Dispacther fucntion set the CPU registers before leaving the interupts
- parameters: int *a-CPU mode; int p[]- job's infomation from p[1]-p[5] if needed
- NICK
- */
+    /*
+    The Dispacther fucntion set the CPU registers before leaving the interupts
+    parameters: int *a-CPU mode; int p[]- job's infomation from p[1]-p[5] if needed
+    NICK
+    */
 
-void Dispatcher(int &a, int p[]) {
-    
+    void Dispatcher(int *a, int p[]) {
+		
 	if(!running_job.isInMemory() || running_job.isBlocked()) {
-		a=1;
+		*a=1;
 	}
-    
-
+	
 	else {
-	    a=2;
-    }}
+	    *a=2;
+	    p[2]=running_job.getAddress();
+	    p[3]=running_job.getSize();
+	    p[4]=TimeSlice;
+	}
+    }
 
 
 
